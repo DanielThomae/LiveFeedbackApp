@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Fragenverwaltung</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-list>
+      <ion-list-header>Frageneigenschaften</ion-list-header>
+      <ion-item>
+        <ion-label>Fragetyp</ion-label>
+        <ion-select [(ngModel)]="selectedQuestion.typ">
+          <ion-option value="Umfrage">Umfrage</ion-option>
+          <ion-option value="Quiz">Quiz</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Fragekategorie</ion-label>
+        <ion-select [(ngModel)]="selectedQuestion.category">
+          <ion-option value="Singlechoice">Singlechoice</ion-option>
+          <ion-option value="Multiplechoice">Multiplechoice</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    <ion-list>
+      <ion-list-header class="questionListHeader">Fragentext</ion-list-header>
+      <ion-item>
+        <input type="text" [(ngModel)]="selectedQuestion.text">
+      </ion-item>
+    </ion-list>
+
+      <ion-list>
+        <ion-list-header class="questionListHeader">Antworten</ion-list-header>
+        <ion-item *ngFor="let answer of selectedQuestion.answers">
+          <ion-input type="text" [(ngModel)]="answer.text"></ion-input>
+          <ion-checkbox item-right [(ngModel)]="answer.isCorrect"></ion-checkbox>
+        </ion-item>
+      </ion-list>
+</ion-content>

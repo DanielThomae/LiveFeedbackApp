@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>MeinProfil</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+<ion-list class="lists">
+  <ion-list-header>Meine Veranstaltungen</ion-list-header>
+  <ion-item *ngFor="let myRoom of myRooms" (click)="itemTapped(myRoom)">
+    <label>{{myRoom.name}}</label>
+  </ion-item>
+</ion-list>
+
+<ion-list ng-if="selectedRoom!=null" class="lists">
+  <ion-list-header>Fragen der Veranstaltung</ion-list-header>
+  <button ion-item *ngFor="let question of selectedRoom.questions" (click)="questionTapped(question)">
+    <label>{{question.text}}</label>
+  </button>
+</ion-list>
+
+ <ion-fab bottom right>
+   <button ion-fab>Add</button>
+   <ion-fab-list side="left">
+     <button ion-fab (click)="newRoom()">Room</button>
+     <button ion-fab (click)="newQuestion()">Frage</button>
+   </ion-fab-list>
+ </ion-fab>
+</ion-content>
