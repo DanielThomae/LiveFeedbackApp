@@ -2,6 +2,7 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { MeinProfil } from '../pages/meinProfil/meinProfil';
+import { QuestionList } from '../pages/questionList/questionList';
 import { QuestionView } from '../pages/questionView/questionView';
 
 //Providers
@@ -12,6 +13,7 @@ import { RoomProvider } from "../providers/room-provider";
   declarations: [
     MyApp,
     MeinProfil,
+    QuestionList,
     QuestionView
   ],
   imports: [
@@ -21,6 +23,7 @@ import { RoomProvider } from "../providers/room-provider";
   entryComponents: [
     MyApp,
     MeinProfil,
+    QuestionList,
     QuestionView
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},RoomProvider]

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-
 import { NavController, NavParams } from 'ionic-angular';
+//Models
+import { Question } from '../models/Question'
+
 
 @Component({
   selector: 'page-questionView',
@@ -11,13 +13,7 @@ export class QuestionView {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.selectedQuestion = this.navParams.data;
   }
-
+newAnswer(){
+  
 }
-
-class Question{
-  id:number;
-  text:string;
-  typ:string;
-  category:string;
-  answer=[];
 }

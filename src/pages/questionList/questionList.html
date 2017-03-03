@@ -1,0 +1,25 @@
+<!--
+  Generated template for the QuestionList page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>questionList</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list class="lists">
+    <ion-list-header>Fragen der Veranstaltung</ion-list-header>
+    <ion-item *ngFor="let question of selectedRoom.questions" (click)="questionTapped(question)">
+      <label>{{question.text}}</label>
+      <ion-icon name="trash" item-right (click)="deleteQuestion(question.id)"></ion-icon>
+    </ion-item>
+  </ion-list>
+  <button ion-button class="newButton" (click)="newQuestion()">neue Frage</button>
+</ion-content>

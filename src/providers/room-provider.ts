@@ -1,6 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
+//Models
+import { Room } from '../pages/models/Room';
+import { Question } from '../pages/models/Question';
+import { Answer } from '../pages/models/Answer';
+
 
 /*
 room = veranstaltung
@@ -17,7 +22,7 @@ export class RoomProvider {
 
   generateDataRoom(){
     let myRoom = new Room();
-      myRoom.id=1,
+      myRoom.id=0,
       myRoom.name="Testraum",
       myRoom.key=1000,
       myRoom.questions= []
@@ -38,7 +43,7 @@ export class RoomProvider {
      return myRoom;
   }
 
-    generateDataSeat(){
+  generateDataSeat(){
       let mySeat = new Object({
         id:1,
         name:"Testsitz",
@@ -51,27 +56,4 @@ export class RoomProvider {
   getMyRooms(){
 
   }
-//providerfuntionen folgen...
-
-}
-
-class Room{
-  id:number;
-  name:string;
-  key:number;
-  questions = new Array<Question>();
-}
-
-class Question{
-  id:number;
-  text:string;
-  typ:string;
-  category:string;
-  answers=new Array<Answer>();
-}
-
-class Answer{
-  id:number;
-  text:string;
-  isCorrect:boolean;
 }
