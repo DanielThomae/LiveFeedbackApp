@@ -4,6 +4,7 @@ import { MyApp } from './app.component';
 import { MeinProfil } from '../pages/meinProfil/meinProfil';
 import { QuestionList } from '../pages/questionList/questionList';
 import { QuestionView } from '../pages/questionView/questionView';
+import { MySeats } from '../pages/mySeats/mySeats';
 
 //Providers
 import { RoomProvider } from "../providers/room-provider";
@@ -14,7 +15,8 @@ import { RoomProvider } from "../providers/room-provider";
     MyApp,
     MeinProfil,
     QuestionList,
-    QuestionView
+    QuestionView,
+    MySeats
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -24,7 +26,8 @@ import { RoomProvider } from "../providers/room-provider";
     MyApp,
     MeinProfil,
     QuestionList,
-    QuestionView
+    QuestionView,
+    MySeats
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},RoomProvider]
 })

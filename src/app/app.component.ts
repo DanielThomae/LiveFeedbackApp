@@ -3,6 +3,8 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 
 import { MeinProfil } from '../pages/meinProfil/meinProfil';
+import { MySeats } from '../pages/mySeats/mySeats';
+
 
 
 @Component({
@@ -20,7 +22,8 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'MeinProfil', component: MeinProfil }
+      { title: 'Meine Veranstaltungen', component: MeinProfil },
+      { title: 'Besuchte Veranstaltungen', component: MySeats }
     ];
 
   }
