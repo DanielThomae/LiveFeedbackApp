@@ -26,7 +26,7 @@
     npm install
 
 ##  Start Server
-    auf den Server(zb Xampp) livefeedback.json importieren
+    auf den Server(zb Xampp) livefeedback.json aus LiveFeedbackServer(https://github.com/DanielThomae/LiveFeedbackServer.git) importieren
     cd LiveFeedback
     cd server
     node index.js
