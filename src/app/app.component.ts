@@ -4,6 +4,7 @@ import { StatusBar, Splashscreen } from 'ionic-native';
 
 import { MeinProfil } from '../pages/meinProfil/meinProfil';
 import { MySeats } from '../pages/mySeats/mySeats';
+import { StatisticView } from '../pages/statisticView/statisticView';
 
 
 
@@ -22,7 +23,8 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Meine Veranstaltungen', component: MeinProfil },
+      { title: 'Veranstaltungen bearbeiten', component: MeinProfil },
+      { title: 'Fragen stellen', component: StatisticView },
       { title: 'Besuchte Veranstaltungen', component: MySeats }
     ];
 

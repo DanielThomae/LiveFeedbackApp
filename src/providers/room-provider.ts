@@ -1,59 +1,72 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
-import 'rxjs/add/operator/map';
-//Models
+import { ConnectionProvider } from './connection.provider';
 import { Room } from '../pages/models/Room';
-import { Question } from '../pages/models/Question';
-import { Answer } from '../pages/models/Answer';
 
-
-/*
-room = veranstaltung
-
-*/
 @Injectable()
 export class RoomProvider {
 
-  myRooms = [];
-  mySeats = [];
-  constructor(public http: Http) {
-    
+  public rooms = new Array<Room>();
+
+
+  constructor(public connection: ConnectionProvider) {
+    this.loadRoomsFromAPI();
   }
 
-  generateDataRoom(){
-    let myRoom = new Room();
-      myRoom.id=0,
-      myRoom.name="Testraum",
-      myRoom.key=1000,
-      myRoom.questions= []
-     let question = new Question();
-      question.id=0;
-      question.text="testfrage";
-      question.typ="Quiz"
-      question.category="Singlechoice";
-      let testantwort = new Answer();
-      testantwort.text = "richtige Antwort";
-      testantwort.isCorrect = true;
-      let testantwort2 = new Answer();
-      testantwort2.text = "falsche Antwort";
-      testantwort2.isCorrect = false;
-      question.answers.push(testantwort)
-      question.answers.push(testantwort2)
-      myRoom.questions.push(question);
-     return myRoom;
+  // Load projects from api
+  loadRoomsFromAPI() {
+    var h = this;
+    this.connection.getReqeuest('/api/v1/rooms', function (results) {
+      console.log(results);
+      h.rooms = results;
+    });
   }
 
-  generateDataSeat(){
-      let mySeat = new Object({
-        id:1,
-        name:"Testsitz",
-        key:1001,
-        questions: []
-      });
-      return mySeat;
+  // Return all the projects
+  getAllRooms() {
+    return this.rooms;
   }
 
-  getMyRooms(){
-
+  // Get a specific project by its id
+  getRoomsById(id) {
+    return this.rooms[this.getRoomsKeyByID(id)];
   }
+
+  getRoomsKeyByID(id) {
+    for (let key in this.rooms) {
+      if (this.rooms[key].id == id) {
+        return key;
+      }
+    }
+  }
+
+  // Add a new project
+  addProject(project) {
+    var h = this;
+    return this.connection.postReqeuest('/api/v1/rooms', project, function (results) {
+      if (results.errorCode == null) {
+        h.loadRoomsFromAPI();
+        return this.getProjectById(project.id);
+      }
+    });
+  }
+
+  updateProject(projectUpdate) {
+    var h = this;
+    return this.connection.putReqeuest('/api/v1/rooms', projectUpdate, function (results) {
+      if (results.errorCode == null) {
+        h.loadRoomsFromAPI();
+        return this.getProjectById(projectUpdate.id);
+      }
+    });
+  }
+
+  deleteProject(id) {
+    var h = this;
+    return this.connection.deleteReqeuest('/api/v1/rooms/' + id, function (results) {
+      if (results.errorCode == null) {
+        h.loadRoomsFromAPI();
+      }
+    });
+  }
+
 }
