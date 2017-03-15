@@ -4,6 +4,8 @@ import { Question } from '../models/Question';
 export class Room {
     id:number;
     name:string;
-    key:number;
+    conectionKey:number;
+    admin:string;
     questions = new Array<Question>();
+    member = new Array<string>();
 }

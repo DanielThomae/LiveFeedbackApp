@@ -15,7 +15,7 @@ export class QuestionList {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.selectedRoom = this.navParams.data;
-    
+    this.selectedRoom.questions = new Array();
   }
 
   questionTapped(tappedQuestion){

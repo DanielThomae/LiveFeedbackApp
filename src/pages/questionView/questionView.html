@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content>
-    <ion-list>
+    <ion-list >
       <ion-list-header>Frageneigenschaften</ion-list-header>
       <ion-item>
         <ion-label>Fragetyp</ion-label>
@@ -25,19 +25,20 @@
         </ion-select>
       </ion-item>
     </ion-list>
-    <ion-list>
+    <ion-list no-lines>
       <ion-list-header class="questionListHeader">Fragentext</ion-list-header>
       <ion-item>
         <input type="text" [(ngModel)]="selectedQuestion.text">
       </ion-item>
     </ion-list>
 
-      <ion-list>
+      <ion-list class="lists">
         <ion-list-header class="questionListHeader">Antworten</ion-list-header>
         <ion-item *ngFor="let answer of selectedQuestion.answers">
           <ion-input type="text" [(ngModel)]="answer.text"></ion-input>
           <ion-checkbox item-right [(ngModel)]="answer.isCorrect"></ion-checkbox>
         </ion-item>
+        
       </ion-list>
         <button ion-button class="newButton" (click)="newAnswer()">neue Anwort</button>
 </ion-content>

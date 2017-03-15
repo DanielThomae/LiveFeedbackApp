@@ -3,17 +3,16 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Verwaltung</ion-title>
+    <ion-title>Meine Veranstaltungen</ion-title>
   </ion-navbar>
 </ion-header>
+
 
 <ion-content padding>
   <ion-list class="lists">
     <ion-list-header>Meine Veranstaltungen</ion-list-header>
     <ion-item *ngFor="let myRoom of roomProvider.getAllRooms()" (click)="roomTapped(myRoom)">
       <label>{{myRoom.name}}</label>
-      <ion-icon name="trash" item-right (click)="deleteRoom(myRoom.id)"></ion-icon>
     </ion-item>
   </ion-list>
-  <button ion-button class="newButton" (click)="newRoom()">neuer Raum</button>
 </ion-content>

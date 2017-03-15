@@ -12,31 +12,31 @@ import { RoomProvider } from "../../providers/room-provider";
   templateUrl: 'meinProfil.html'
 })
 export class MeinProfil {
-  myRooms=[];
+  myRooms= Array<Room>();
   selectedRoom= new Room();
   idCount:number = 1;
+  keyCount:number = 1001;
   
 
   constructor(public navCtrl: NavController, public roomProvider: RoomProvider) {
-    this.myRooms.push(this.roomProvider.generateDataRoom());
+    this.myRooms = roomProvider.rooms;
+    console.log(roomProvider.rooms);
   }
 
   roomTapped(tappedRoom){
-    console.log(tappedRoom.id);
-    this.navCtrl.push(QuestionList,tappedRoom);
+    this.navCtrl.push(QuestionList,{room:tappedRoom});
   }
 
 
   newRoom(){
     let newRoom = new Room();
     newRoom.id= this.idCount;
+    newRoom.conectionKey = this.keyCount;
     this.idCount++;
+    this.keyCount++;
+    newRoom.admin = "Me";
     newRoom.name = "name des neuen Raums";
     this.myRooms.push(newRoom);
-  }
-
-  changeRoom(id){
-
   }
 
   deleteRoom(id){

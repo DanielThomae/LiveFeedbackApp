@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Fragen beantworten</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-item class="timestamp">
+       17h : 30m : 09s
+    </ion-item>
+
+    <div class="question">
+      <h5>{{question.text}}</h5>
+    </div>
+
+    <ion-item *ngFor="let answer of question.answers">
+      <ion-input [(ngModel)]="answer.text"></ion-input>
+      <ion-checkbox item-right [(ngModel)]="answer.isCorrect"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+    
+  <button ion-button class="newButton">Bestätigen</button>
+
+</ion-content>

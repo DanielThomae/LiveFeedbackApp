@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams,} from 'ionic-angular';
 //Models
 import { Question } from '../models/Question'
+import { Answer } from '../models/Answer'
 
 
 @Component({
@@ -13,7 +14,11 @@ export class QuestionView {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.selectedQuestion = this.navParams.data;
   }
-newAnswer(){
-  
-}
+  newAnswer(){
+    let newAnswer = new Answer();
+    newAnswer.text = "Hier eine Antwort eingeben";
+    newAnswer.isCorrect = false;
+    this.selectedQuestion.answers.push(newAnswer);
+  }
+
 }

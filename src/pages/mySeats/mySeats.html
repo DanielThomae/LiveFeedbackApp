@@ -4,11 +4,22 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Besuchte Veranstaltungen</ion-title>
+    <ion-title>Meine Veranstaltungen</ion-title>
   </ion-navbar>
 </ion-header>
 
 
 <ion-content padding>
-  <label>Hier kommen besuchte veranstaltungen reins</label>
+  <h5>Einer Veranstaltung beitreten</h5>
+  <label>Key</label>
+  <input type="number" [(ngModel)]="key">
+  <button ion-button class="buttonJoin" st (click)="joinSeat(key)">Beitreten</button>
+
+<ion-list style="margin-top:30px;">
+  <ion-list-header>Meine Veranstaltung</ion-list-header>
+  <ion-item *ngFor="let mySeat of mySeats" (click)="pushToQuestion()">
+    <label>{{mySeat.name}}</label><label item-right>1 offene Frage</label> 
+  </ion-item>
+</ion-list>
+
 </ion-content>
